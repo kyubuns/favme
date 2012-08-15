@@ -20,13 +20,14 @@ class UserInputString:
     return self._message
 
   def __str__(self):
+    if self.rawHTML == False and self.escapeHTML == False and self.escapeJS == False:
+      raise TypeError, ''
+
     tmp = self._message
     if self.escapeHTML == True:
       tmp = escape(tmp)
     if self.escapeJS == True:
       tmp = js_escape(tmp)
-    if tmp == self._message and self.rawHTML == False:
-      raise TypeError, ''
     return tmp
 
   def js_escape(src):
@@ -54,7 +55,7 @@ class FavTemplate:
     return self.template.render(safe_elements)
 
 
-def favreq(name, default=None):
+def favreq(name, default=""):
   return UserInputString(request.values.get(name, default))
 
 ##########################################################

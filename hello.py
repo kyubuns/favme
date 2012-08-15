@@ -5,7 +5,7 @@ from favme import FavTemplate, FavEnvironment, favreq
 app = Flask(__name__)
 env = FavEnvironment(loader=FileSystemLoader("."))
 
-@app.route("/")
+@app.route("/", methods=['GET','POST'])
 def add_user():
   template = env.get_template("test.html")
   return template.render(name=favreq("name"))
