@@ -12,7 +12,7 @@ class FavTemplateConverter:
     dom = lxml.html.fromstring(s)
     FavTemplateConverter.sub(dom.head)
     FavTemplateConverter.sub(dom.body)
-    print(lxml.etree.tostring(dom, pretty_print=True))
+    return lxml.etree.tostring(dom, pretty_print=True)
 
   @staticmethod
   def eri(tag, parent_tag, js_flag=False):
@@ -49,7 +49,8 @@ class FavTemplateConverter:
       #child
       FavTemplateConverter.sub(element)
 
-if len(sys.argv) != 2:
-  print "usage: *******************"
-else:
-  FavTemplateConverter.run(sys.argv[1])
+if __name__ == '__main__':
+  if len(sys.argv) != 2:
+    print "usage: *******************"
+  else:
+    print FavTemplateConverter.run(sys.argv[1])

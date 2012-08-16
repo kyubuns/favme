@@ -2,6 +2,7 @@
 from flask import request
 from jinja2 import Environment, Template
 from xml.sax.saxutils import *
+from converter import FavTemplateConverter
 import jinja2
 import copy
 
@@ -57,7 +58,8 @@ def js_escape(src):
 
 class FavEnvironment(Environment):
   def get_template(self, filename):
-    return FavTemplate(super(FavEnvironment, self).get_template(filename))
+    template_text = FavTemplateConverter.run(filename)
+    return FavTemplate(super(FavEnvironment, self).from_string(template_text))
 
 
 class FavTemplate:
