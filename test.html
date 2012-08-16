@@ -1,8 +1,16 @@
 <!doctype html>
 <head>
-  <title>waku</title>
+  <title>すりっぱいそん</title>
 </head>
 <body>
+  <style>
+    body:{
+      color: {{ name | css | html }}
+    }
+  </style>
+  <script>
+    var s = "{{ name | js | html }}"
+  </script>
   {% if name %}
   <h1>Hello {{ name | html }}!</h1>
   {% else %}
@@ -13,4 +21,6 @@
     <input name="name" type=text></input>
     <input type=submit />
   </form>
+  <input value="{{ name | js | html }}"></input>
+  <iframe src="{{ name | js | html }}"></iframe>
 </body>
