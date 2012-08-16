@@ -18,8 +18,3 @@ def add_user():
 if __name__ == "__main__":
   app.run(debug=True)
 
-# {{.*?}}
-# 直前の<.*?>を見てscriptとかstyleとかなら失敗
-# 現在箇所より前にある"の数が奇数
-
-# =\s*\".*?\"
