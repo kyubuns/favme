@@ -5,14 +5,18 @@
 <body>
   <style>
     body:{
-      color: {{ name | css | html }}
+      color: {{name}}
+      color: {{name|raw}}
+      color: {{name  }}
+      color: {{name}}
+      color: {{name}}
     }
   </style>
   <script>
-    var s = "{{ name | js | html }}"
+    var s = "{{ name }}"
   </script>
   {% if name %}
-  <h1>Hello {{ name | html }}!</h1>
+  <h1>Hello {{ name }}! {{ name | raw }}</h1>
   {% else %}
   <h1>Hello World!</h1>
   {% endif %}
@@ -21,6 +25,6 @@
     <input name="name" type=text></input>
     <input type=submit />
   </form>
-  <input value="{{ name | js | html }}" />
-  <iframe src="{{ name | js | html }}"></iframe>
+  <input value="{{ text }}" />
+  <iframe src="{{ name }}"></iframe>
 </body>

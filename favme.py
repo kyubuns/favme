@@ -36,8 +36,11 @@ class UserInputString:
     if self.escapeHTML == True:
       tmp = escape(tmp)
     if self.escapeCSS == True:
-      tmp = tmp.lower()
-      tmp = tmp.replace("expression", "")
+      check = tmp.lower()
+      print check
+      print check.find("expression")
+      if check.find("expression") != -1:
+        return "\"\""
     return tmp
 
 def js_escape(src):
