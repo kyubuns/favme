@@ -31,10 +31,10 @@ class UserInputString:
       raise TypeError, 'hoge'
 
     tmp = self._message
-    if self.escapeHTML == True:
-      tmp = escape(tmp)
     if self.escapeJS == True:
       tmp = js_escape(tmp)
+    if self.escapeHTML == True:
+      tmp = escape(tmp)
     if self.escapeCSS == True:
       tmp = tmp.lower()
       tmp = tmp.replace("expression", "")
