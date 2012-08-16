@@ -4,11 +4,15 @@ import lxml.html
 import lxml.etree
 import re
 import sys
+import codecs
+
+sys.stdin  = codecs.getreader('utf_8')(sys.stdin)
+sys.stdout = codecs.getwriter('utf_8')(sys.stdout)
 
 class FavTemplateConverter:
   @staticmethod
   def run(filename):
-    s = open(filename).read()
+    s = codecs.open(filename, 'r', "utf_8").read()
     dom = lxml.html.fromstring(s)
     FavTemplateConverter.sub(dom.head)
     FavTemplateConverter.sub(dom.body)
