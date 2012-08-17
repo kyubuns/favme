@@ -2,21 +2,13 @@
 <html lang="ja">
   <head>
     <meta charset="utf-8" />
-    <title>Slippython</title>
+    <title>すりっぱいそん</title>
   </head>
   <body>
-    <script>
-      var s = "{{ name }}"
-    </script>
-    {% if name %}
-    <h1>Hello {{ name }}!</h1>
-    {% else %}
-    <h1>名前をいれてね！</h1>
-    {% endif %}
-
+    <h1>これは{{ name1 }}という{{ name2 }}で</h1>
     <form action="." method="post">
-      <p>名前</p>
-      <input name="name" type=text />
+      <input name="name1" type=text />
+      <input name="name2" type=text />
       <input type=submit />
     </form>
   </body>
