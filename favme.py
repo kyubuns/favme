@@ -56,18 +56,7 @@ def js_escape(src):
 class FavEnvironment(Environment):
   def get_template(self, filename):
     template_text = FavTemplateConverter.run(filename)
-    return FavTemplate(super(FavEnvironment, self).from_string(template_text))
-
-
-class FavTemplate:
-  def __init__(self, template):
-    self.template = template
-
-  def render(self, **elements):
-    safe_elements = {}
-    for key in elements:
-      safe_elements[key] = elements[key]
-    return self.template.render(safe_elements)
+    return super(FavEnvironment, self).from_string(template_text)
 
 
 def favreq(name, default=""):
@@ -102,3 +91,4 @@ def css_filter(m):
     s.escapeCSS = True
   return s
 jinja2.filters.FILTERS['css'] = css_filter
+

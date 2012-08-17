@@ -1,17 +1,16 @@
 # -*- coding: utf-8 -*-
 from flask import Flask, request
-from jinja2 import FileSystemLoader, Environment, Template
+from jinja2 import FileSystemLoader, Environment
+from favme import FavEnvironment, favreq
 
 app = Flask(__name__)
-env = Environment(loader=FileSystemLoader("."))
+env = FavEnvironment(loader=FileSystemLoader("."))
 
-@app.route("/", methods=['GET','POST'])
-def add_user():
+@app.route("/", methods=['GET', 'POST'])
+def helloworld():
   template = env.get_template("test.html")
-  name1 = favreq("name1")
-  name2 = favreq("name2")
-  return template.render(name1=name1, name2=name2)
+  userinput = favreq("name")
+  return template.render(name = userinput)
 
 if __name__ == "__main__":
   app.run(debug=True)
-
