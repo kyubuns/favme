@@ -6,9 +6,6 @@ import re
 import sys
 import codecs
 
-sys.stdin  = codecs.getreader('utf_8')(sys.stdin)
-sys.stdout = codecs.getwriter('utf_8')(sys.stdout)
-
 class FavTemplateConverter:
   @staticmethod
   def run(filename):
@@ -16,7 +13,7 @@ class FavTemplateConverter:
     dom = lxml.html.fromstring(s)
     FavTemplateConverter.sub(dom.head)
     FavTemplateConverter.sub(dom.body)
-    return lxml.etree.tostring(dom, pretty_print=True)
+    return lxml.etree.tostring(dom, encoding=unicode, pretty_print=True)
 
   @staticmethod
   def eri(tag, parent_tag, js_flag=False):

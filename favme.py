@@ -13,7 +13,6 @@ class UserInputString:
     self.escapeJS = False
     self.escapeCSS = False
     self.rawHTML = False
-    print "create"
 
   def __eq__(self, i):
     return self._message == i
@@ -38,8 +37,6 @@ class UserInputString:
       tmp = escape(tmp)
     if self.escapeCSS == True:
       check = tmp.lower()
-      print check
-      print check.find("expression")
       if check.find("expression") != -1:
         return "\"\""
     return tmp
@@ -75,17 +72,6 @@ class FavTemplate:
 
 def favreq(name, default=""):
   return UserInputString(request.values.get(name, default))
-
-def tounicode(data):
-  codecs = ['shift_jis','utf-8','euc_jp','cp932',
-            'euc_jis_2004','euc_jisx0213','iso2022_jp','iso2022_jp_1',
-            'iso2022_jp_2','iso2022_jp_2004','iso2022_jp_3','iso2022_jp_ext',
-            'shift_jis_2004','shift_jisx0213','utf_16','utf_16_be',
-            'utf_16_le','utf_7','utf_8_sig'];
-  for codec in codecs:
-    try: return data.decode(codec);
-    except: continue;
-  return u"";
 
 ##########################################################
 
